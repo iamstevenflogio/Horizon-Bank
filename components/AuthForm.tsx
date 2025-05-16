@@ -92,7 +92,7 @@ const AuthForm = ( { type }: { type: string }) => {
                             <CustomInput 
                                 control={form.control} name='password' label='Password' 
                                 placeholder='Enter your password' /> 
-
+                    <div className="flex flex-col gap-4">
                         <Button type="submit" disabled={isLoading}
                         className="form-btn">
                             {isLoading ? (
@@ -103,8 +103,26 @@ const AuthForm = ( { type }: { type: string }) => {
                                 </>
                             ) : type === 'sign-in'       //if sign-in or sign-up, then updates the page
                               ? 'Sign In' : 'Sign Up'}   
-                        </Button>
+                        </Button>                        
+                    </div>
+
                     </form>
+
+                    <footer className="flex justify-center gap-1">
+                        <p className="text-14 font-normal text-gray-600">
+                            {type === 'sign-in'
+                            ? "Don't have an account?"
+                            : "Already have an account?"
+                            }
+                        </p>
+                        <Link href={type === 'sign-in' ? '/sign-up'
+                        : '/sign-in'} className="form-link">
+                            {type === 'sign-in' ? 'Sign up'
+                        : 'Sign in'}
+                        </Link>
+
+                    </footer>
+
                 </Form>
             </>
         )}
